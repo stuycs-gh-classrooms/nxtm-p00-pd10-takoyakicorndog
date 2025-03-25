@@ -32,8 +32,8 @@ All projects will require the following:
 What is the formula for your force? Including descriptions/definitions for the symbols. (You may include a picture of the formula if it is not easily typed.)
 ![image](https://github.com/user-attachments/assets/217499d0-364f-4e1e-842e-988b0220046f)
 
-positive = push
-negative = npull
+same charges = attract
+opposite charges = repel
 ![image](https://github.com/user-attachments/assets/ebae679f-943e-4d03-a28f-ad18fb502add)
 
 
@@ -61,18 +61,13 @@ negative = npull
 
 ### Simulation 1: Gravity
 Describe how you will attempt to simulate orbital motion.
-
-attracts all the time
+Set a gravitional constant on a fixed orb and have the other orbs fall into that fixed orb's orbit.
 
 --- 
 
 ### Simulation 2: Spring
 Describe what your spring simulation will look like. Explain how it will be setup, and how it should behave while running.
-
-SPRING_CONSTANT = random number
-
-
-wants to be in the middle with no displacement and no stretchy or squashy
+There will be a spirng constant and spsring length variable. If the spring length is equivalent to the spring constant multipled to the displacement of the spring, then the spring with be normal. If the spring constant multipled by the displacement of the spring is greater than the default spring length, then the spring compressed.
 
 --- 
 
