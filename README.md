@@ -81,7 +81,7 @@ Describe what your drag simulation will look like. Explain how it will be setup,
 
 mult based on radius
 
-if orb = big and chonky then more drag
+As mass of orb increases, so does drag
 
 --- 
 
