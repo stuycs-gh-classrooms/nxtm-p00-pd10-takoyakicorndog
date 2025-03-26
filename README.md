@@ -64,9 +64,6 @@ Describe how you will attempt to simulate orbital motion.
 - Set a gravitional constant on a fixed orb and have the other orbs fall into that fixed orb's orbit.
 
 --- 
-oooooooooooooooooooo
-
---- 
 
 ### Simulation 3: Drag
 Describe what your drag simulation will look like. Explain how it will be setup, and how it should behave while running.
