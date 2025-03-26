@@ -70,6 +70,8 @@ Describe what your drag simulation will look like. Explain how it will be setup,
 - Mult based on radius
 - As mass of orb increases, so does drag. There is a direct correlation between the two.
 
+---
+
 ### Simulation 4: Custom force
 Describe what your Custom force simulation will look like. Explain how it will be setup, and how it should behave while running.
 
