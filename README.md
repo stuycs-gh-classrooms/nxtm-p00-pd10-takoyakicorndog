@@ -39,16 +39,16 @@ opposite charges = repel
 
 ### Custom Force
 - What information that is already present in the `Orb` or `OrbNode` classes does this force use?
-  - distance
+  - Distance 
 
 - Does this force require any new constants, if so what are they and what values will you try initially?
-  - charge
+  - Charge of particles
 
 - Does this force require any new information to be added to the `Orb` class? If so, what is it and what data type will you use?
   - Coulomb's constant (approximately 8.99 x 10^9 N⋅m²/C²), gives the value of a quantity (Force) when all of the other factors are one, float
 
 - Does this force interact with other `Orbs`, or is it applied based on the environment?
-  - other orbs
+  - Other orbs
 
 - In order to calculate this force, do you need to perform extra intermediary calculations? If so, what?
   - multCharge = charge * other.charge
@@ -61,24 +61,17 @@ opposite charges = repel
 
 ### Simulation 1: Gravity
 Describe how you will attempt to simulate orbital motion.
-Set a gravitional constant on a fixed orb and have the other orbs fall into that fixed orb's orbit.
+- Set a gravitional constant on a fixed orb and have the other orbs fall into that fixed orb's orbit.
 
 --- 
-
-### Simulation 2: Spring
-Describe what your spring simulation will look like. Explain how it will be setup, and how it should behave while running.
-There will be a spirng constant and spsring length variable. If the spring length is equivalent to the spring constant multipled to the displacement of the spring, then the spring with be normal. If the spring constant multipled by the displacement of the spring is greater than the default spring length, then the spring compressed.
+oooooooooooooooooooo
 
 --- 
 
 ### Simulation 3: Drag
 Describe what your drag simulation will look like. Explain how it will be setup, and how it should behave while running.
-
-mult based on radius
-
-As mass of orb increases, so does drag
-
---- 
+- Mult based on radius
+- As mass of orb increases, so does drag. There is a direct correlation between the two.
 
 ### Simulation 4: Custom force
 Describe what your Custom force simulation will look like. Explain how it will be setup, and how it should behave while running.
