@@ -85,3 +85,5 @@ Describe what your combination simulation will look like. Explain how it will be
 every force active
 
 combines all them forces
+
+fixed orb with random orbiters with rand charges and masses
