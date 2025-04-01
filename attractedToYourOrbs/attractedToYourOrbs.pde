@@ -4,6 +4,7 @@ int MAX_SIZE = 60;
 float MIN_MASS = 10;
 float MAX_MASS = 100;
 float G_CONSTANT = 1;
+float C_CONSTANT = 1;
 float D_COEF = 0.1;
 
 int SPRING_LENGTH = 50;
@@ -22,9 +23,8 @@ OrbNode o0, o1, o2, o3;
 void setup() {
   size(600, 600);
 
-  earth = new FixedOrb(width/2, height * 200, 1, 20000);
+  earth = new FixedOrb(width/2, height * 200, 1, 20000, random(-1,1));
   makeOrbs();
-
 }//setup
 
 void draw() {
@@ -39,10 +39,25 @@ void draw() {
   o0.applyForce(sf);
   sf = o1.getSpring(o1.previous, SPRING_LENGTH, SPRING_K);
   o1.applyForce(sf);
+  
+  PVector cf = o0.getChargeForce(o0.next, C_CONSTANT);
+  o0.applyForce(cf);
+  cf = o1.getChargeForce(o1.previous, C_CONSTANT);
+  o1.applyForce(cf);
 
   o0.move(toggles[BOUNCE]);
   o1.move(toggles[BOUNCE]);
 
+  stroke(0);
+  if (SPRING_LENGTH > dist(o0.center.x, o0.center.y, o1.center.x, o1.center.y)) {
+    stroke(0, 255, 0);
+  } else if (SPRING_LENGTH == dist(o0.center.x, o0.center.y, o1.center.x, o1.center.y)) {
+    stroke(0);
+  } else {
+    stroke(255, 0, 0);
+  }
+  line(o0.center.x-2, o0.center.y-2, o1.center.x-2, o1.center.y-2);
+  line(o0.center.x+2, o0.center.y+2, o1.center.x+2, o1.center.y+2);
 }//draw
 
 
@@ -58,15 +73,22 @@ void makeOrbs() {
   o2.previous = o1;
   o2.next = o3;
   o3.previous = o2;
-
 }
 
 
 void keyPressed() {
-  if (key == ' ') { toggles[MOVING] = !toggles[MOVING]; }
-  if (key == 'g') { toggles[GRAVITY] = !toggles[GRAVITY]; }
-  if (key == 'b') { toggles[BOUNCE] = !toggles[BOUNCE]; }
-  if (key == 'd') { toggles[DRAGF] = !toggles[DRAGF]; }
+  if (key == ' ') {
+    toggles[MOVING] = !toggles[MOVING];
+  }
+  if (key == 'g') {
+    toggles[GRAVITY] = !toggles[GRAVITY];
+  }
+  if (key == 'b') {
+    toggles[BOUNCE] = !toggles[BOUNCE];
+  }
+  if (key == 'd') {
+    toggles[DRAGF] = !toggles[DRAGF];
+  }
   if (key == 'r') {
     makeOrbs();
   }
@@ -80,8 +102,11 @@ void displayMode() {
 
   for (int m=0; m<toggles.length; m++) {
     //set box color
-    if (toggles[m]) { fill(0, 255, 0); }
-    else { fill(255, 0, 0); }
+    if (toggles[m]) {
+      fill(0, 255, 0);
+    } else {
+      fill(255, 0, 0);
+    }
 
     float w = textWidth(modes[m]);
     rect(x, 0, w+5, 20);
