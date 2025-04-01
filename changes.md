@@ -39,13 +39,14 @@ opposite charges = repel
 
 ### Custom Force
 - What information that is already present in the `Orb` or `OrbNode` classes does this force use?
-  - Distance 
+  - center 
 
 - Does this force require any new constants, if so what are they and what values will you try initially?
-  - Charge of particles
+  - Coulomb's constant (approximately 8.99 x 10^9 N⋅m²/C²), gives the value of a quantity (Force) when all of the other factors are one, float
 
 - Does this force require any new information to be added to the `Orb` class? If so, what is it and what data type will you use?
-  - Coulomb's constant (approximately 8.99 x 10^9 N⋅m²/C²), gives the value of a quantity (Force) when all of the other factors are one, float
+  - Charge of particles (randomly assigned but magnitude of charges will be the same)
+  - distance which is distance between orbs, PVector
 
 - Does this force interact with other `Orbs`, or is it applied based on the environment?
   - Other orbs
@@ -65,10 +66,15 @@ Describe how you will attempt to simulate orbital motion.
 
 --- 
 
+### Simulation 2: Spring
+Describe what your spring simulation will look like. Explain how it will be setup, and how it should behave while running.
+- have a fixed orb and make #chain
+
+---
+
 ### Simulation 3: Drag
 Describe what your drag simulation will look like. Explain how it will be setup, and how it should behave while running.
-- Mult based on radius
-- As mass of orb increases, so does drag. There is a direct correlation between the two.
+- drag simulation will be like the simulation done in the prev labs
 
 ---
 
@@ -82,10 +88,6 @@ opposite attracts unopposite repels
 --- 
 
 ### Simulation 5: Combination
-Describe what your combination simulation will look like. Explain how it will be setup, and how it should behave while running.
-
-every force active
-
-combines all them forces
+Describe what your combination simulation will look like. Explain how it will be setup, and how it should behave while running
 
 fixed orb with random orbiters with rand charges and masses
