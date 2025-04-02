@@ -140,6 +140,7 @@ class Orb {
     fill(c);
     circle(center.x, center.y, bsize);
     fill(0);
-    //text(mass, center.x, center.y);
+    //text("Mass: " + mass, center.x, center.y);
+    text("Charge: " + charge, center.x, center.y);
   }//display
 }//Ball

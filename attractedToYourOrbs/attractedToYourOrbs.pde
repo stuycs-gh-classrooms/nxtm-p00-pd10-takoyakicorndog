@@ -14,8 +14,9 @@ int MOVING = 0;
 int BOUNCE = 1;
 int GRAVITY = 2;
 int DRAGF = 3;
-boolean[] toggles = new boolean[4];
-String[] modes = {"Moving", "Bounce", "Gravity", "Drag"};
+int ATTRACT = 4;
+boolean[] toggles = new boolean[5];
+String[] modes = {"Moving", "Bounce", "Gravity", "Drag", "Attract"};
 
 FixedOrb earth;
 OrbNode o0, o1, o2, o3;
@@ -39,7 +40,8 @@ void draw() {
   o0.applyForce(sf);
   sf = o1.getSpring(o1.previous, SPRING_LENGTH, SPRING_K);
   o1.applyForce(sf);
-  
+
+
   PVector cf = o0.getChargeForce(o0.next, C_CONSTANT);
   o0.applyForce(cf);
   cf = o1.getChargeForce(o1.previous, C_CONSTANT);
@@ -88,6 +90,9 @@ void keyPressed() {
   }
   if (key == 'd') {
     toggles[DRAGF] = !toggles[DRAGF];
+  }
+  if (key == 'c') {
+    toggles[ATTRACT] = !toggles[ATTRACT];
   }
   if (key == 'r') {
     makeOrbs();
