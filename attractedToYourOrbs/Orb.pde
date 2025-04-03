@@ -40,10 +40,11 @@ class Orb {
       xBounce();
       yBounce();
     }
-
+    if(toggles[MOVING]) {
     velocity.add(acceleration);
     center.add(velocity);
     acceleration.mult(0);
+    }
   }//move
 
   void applyForce(PVector force) {

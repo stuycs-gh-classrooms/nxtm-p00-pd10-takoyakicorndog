@@ -15,8 +15,9 @@ int BOUNCE = 1;
 int GRAVITY = 2;
 int DRAGF = 3;
 int ATTRACT = 4;
-boolean[] toggles = new boolean[5];
-String[] modes = {"Moving", "Bounce", "Gravity", "Drag", "Attract"};
+int SPRING = 5;
+boolean[] toggles = new boolean[6];
+String[] modes = {"Moving", "Bounce", "Gravity", "Drag", "Attract", "Spring"};
 
 FixedOrb earth;
 OrbNode o0, o1, o2, o3;
@@ -24,7 +25,7 @@ OrbNode o0, o1, o2, o3;
 void setup() {
   size(600, 600);
 
-  earth = new FixedOrb(width/2, height * 200, 1, 20000, random(-1,1));
+  earth = new FixedOrb(width/2, height * 200, 1, 20000, random(-1, 1));
   makeOrbs();
 }//setup
 
@@ -36,10 +37,23 @@ void draw() {
   o0.display();
   o1.display();
 
-  PVector sf = o0.getSpring(o0.next, SPRING_LENGTH, SPRING_K);
-  o0.applyForce(sf);
-  sf = o1.getSpring(o1.previous, SPRING_LENGTH, SPRING_K);
-  o1.applyForce(sf);
+  if (toggles[SPRING]) {
+    PVector sf = o0.getSpring(o0.next, SPRING_LENGTH, SPRING_K);
+    o0.applyForce(sf);
+    sf = o1.getSpring(o1.previous, SPRING_LENGTH, SPRING_K);
+    o1.applyForce(sf);
+
+    if (SPRING_LENGTH > dist(o0.center.x, o0.center.y, o1.center.x, o1.center.y)) {
+      stroke(0, 255, 0);//red
+    } else if (SPRING_LENGTH == dist(o0.center.x, o0.center.y, o1.center.x, o1.center.y)) {
+      stroke(0); //black
+    } else {
+      stroke(255, 0, 0);//green
+    }
+    
+    line(o0.center.x-2, o0.center.y-2, o1.center.x-2, o1.center.y-2);
+    line(o0.center.x+2, o0.center.y+2, o1.center.x+2, o1.center.y+2);
+  
 
 
   PVector cf = o0.getChargeForce(o0.next, C_CONSTANT);
@@ -49,17 +63,7 @@ void draw() {
 
   o0.move(toggles[BOUNCE]);
   o1.move(toggles[BOUNCE]);
-
-  stroke(0);
-  if (SPRING_LENGTH > dist(o0.center.x, o0.center.y, o1.center.x, o1.center.y)) {
-    stroke(0, 255, 0);
-  } else if (SPRING_LENGTH == dist(o0.center.x, o0.center.y, o1.center.x, o1.center.y)) {
-    stroke(0);
-  } else {
-    stroke(255, 0, 0);
-  }
-  line(o0.center.x-2, o0.center.y-2, o1.center.x-2, o1.center.y-2);
-  line(o0.center.x+2, o0.center.y+2, o1.center.x+2, o1.center.y+2);
+}
 }//draw
 
 
@@ -93,6 +97,9 @@ void keyPressed() {
   }
   if (key == 'c') {
     toggles[ATTRACT] = !toggles[ATTRACT];
+  }
+  if (key == 's') {
+    toggles[SPRING] = !toggles[SPRING];
   }
   if (key == 'r') {
     makeOrbs();
