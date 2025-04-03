@@ -62,6 +62,12 @@ opposite charges = repel
 ### Simulation 1: Gravity
 Describe how you will attempt to simulate orbital motion.
 - Set a gravitional constant on a fixed orb and have the other orbs fall into that fixed orb's orbit.
+- 
+--- 
+
+### Simulation 2: Spring
+Describe how you will attempt to simulate spring motion.
+- make a chain of orbs attaching to a fixed orb
 
 --- 
 
